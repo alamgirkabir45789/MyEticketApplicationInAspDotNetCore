@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MyEticketApplication.Models.RouteFrom>;
+<h1 class="text-center text-muted">From Route List</h1>
+<div>
+    <a class="btn btn-sm btn-primary mb-1" id="addRouteFrom">Add Route</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+       <tr>
+            <th>SL/No</th>
+            <th>From</th>    
+            <th>Actions</th>
+       </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Select((value,index)=>new{index,value}))
+        {
+
+            <tr>
+                <td>@( item.index + 1)</td>
+                <td>@item.value.RouteFromName</td>
+                <td>
+                    <a class="btn btn-sm btn-warning">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-RouteFromId="@item.value.RouteFromId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script>
+    var id = document.querySelector("#addRouteFrom");
+
+    id.addEventListener('click', function(){
+       console.log("hi")
+    })
+
+</script>
