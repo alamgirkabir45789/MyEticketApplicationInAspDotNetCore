@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<MyEticketApplication.Models.RouteFrom>;
 <h1 class="text-center text-muted">From Route List</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div>
-    <a class="btn btn-sm btn-primary mb-1" id="addRouteFrom">Add Route</a>
+    <button type="button" class="btn btn-info btn-sm mb-1" data-toggle="modal" data-target="#myModal">Create</button>
 </div>
 <table class="table table-bordered">
     <thead>
@@ -27,13 +30,38 @@
     </tbody>
 </table>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between">
+                <h4 class="modal-title">Modal Header</h4>
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body">
+              
+                <form asp-asp-controller="RouteFrom" asp-action="Create" method="post">
+                    <div class="mb-3">
+                        <label for="RouteFromName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="RouteFromName" >
+                    </div> 
+                    <div class="mb-3">
+                        <label for="RouteToId" class="form-label">Route To</label>
+                        <input type="text" class="form-control" id="RouteToId">
+                    </div>
+                   
+                  
+                    <button type="submit" class="btn btn-primary" asp-action="Create" >Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
-<script>
-    var id = document.querySelector("#addRouteFrom");
-
-    id.addEventListener('click', function(){
-       console.log("hi")
-    })
-
-</script>

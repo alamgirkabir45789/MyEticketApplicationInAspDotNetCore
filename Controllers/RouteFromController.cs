@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
 
 namespace MyEticketApplication.Controllers
@@ -23,6 +24,22 @@ namespace MyEticketApplication.Controllers
                 return NotFound();
             }
             _routeFromRepository.DeleteRouteFrom(RouteFromId);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Create(RouteFrom routeFrom)
+        {
+            
+            if(ModelState.IsValid)
+            {
+                var data = new RouteFrom()
+                {
+                    RouteFromName = routeFrom.RouteFromName,
+                    RouteTo = routeFrom.RouteTo,
+                };
+            _routeFromRepository.AddRouteFrom(data);
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
     }

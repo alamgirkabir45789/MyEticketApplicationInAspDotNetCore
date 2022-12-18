@@ -1,4 +1,5 @@
-﻿using MyEticketApplication.Data;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using MyEticketApplication.Data;
 using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
 
@@ -19,6 +20,8 @@ namespace MyEticketApplication.Repositories.Repository
         }
         public RouteFrom GetRouteFromById(int id)
         {
+
+           
             return _dbContext.RouteFroms.SingleOrDefault(i => i.RouteFromId == id);
         }
         public RouteFrom DeleteRouteFrom(int id)
@@ -29,6 +32,14 @@ namespace MyEticketApplication.Repositories.Repository
                 _dbContext.RouteFroms.Remove(routeFrom);
                 _dbContext.SaveChanges();                                                                                                                                                                                                                                           
             }
+            return routeFrom;
+        }
+
+        public RouteFrom AddRouteFrom(RouteFrom routeFrom)
+        {
+           
+             _dbContext.RouteFroms.Add(routeFrom);
+            _dbContext.SaveChanges();
             return routeFrom;
         }
     }
