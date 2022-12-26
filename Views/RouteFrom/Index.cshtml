@@ -1,30 +1,52 @@
 ﻿@model IEnumerable<MyEticketApplication.Models.RouteFrom>;
 <h1 class="text-center text-muted">From Route List</h1>
-<div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <a class="btn btn-sm btn-primary mb-1" asp-action="Create" asp-controller="RouteFrom">Add Route</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div>
+    <button type="button" class="btn btn-info btn-sm mb-1" data-toggle="modal" data-target="#myModal">Create</button>
 </div>
 <table class="table table-bordered">
     <thead>
-       <tr>
-            <th>SL/No</th>
-            <th>From</th>    
-            <th>Actions</th>
-       </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model.Select((value,index)=>new{index,value}))
-        {
 
-            <tr>
-                <td>@( item.index + 1)</td>
-                <td>@item.value.RouteFromName</td>
-                <td>
-                    <a class="btn btn-sm btn-warning">Edit</a>
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-RouteFromId="@item.value.RouteFromId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    <div class="mb-3">
+                        <label for="RouteFromName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="RouteFromName" >
+                    </div> 
+                    <div class="mb-3">
+                        <label for="RouteToId" class="form-label">Route To</label>
+                        <input type="text" class="form-control" id="RouteToId">
+                    </div>
+                   
+                  
+                    <button type="submit" class="btn btn-primary" asp-action="Create" >Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 

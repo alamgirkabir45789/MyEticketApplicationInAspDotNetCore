@@ -24,9 +24,6 @@ namespace MyEticketApplication.Controllers
         public IActionResult Create( )
         {
 
-            var data = _routeFromRepository.GetAllRouteToInfo();
-            ViewData["data"] = new SelectList(data, "RouteToId", "RouteToName");
-
             return View();
         }
 
