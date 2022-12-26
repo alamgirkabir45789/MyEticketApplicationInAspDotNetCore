@@ -1,0 +1,27 @@
+﻿@model IEnumerable< MyEticketApplication.Models.RouteTo>
+<h1>Route To Information</h1>
+<div>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="RouteTo">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.RouteToName</td>
+                    <td>
+                        <a class="btn btn-secondary" asp-action="Edit">Edit</a>
+                        <a asp-action="Delete" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

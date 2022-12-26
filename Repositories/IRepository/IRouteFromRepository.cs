@@ -7,5 +7,7 @@ namespace MyEticketApplication.Repositories.IRepository
         IEnumerable<RouteFrom> GetAllFromRoute();
         RouteFrom GetRouteFromById(int id);  
         RouteFrom DeleteRouteFrom(int id);
+        RouteFrom AddRouteFrom(RouteFrom routeFrom,RouteTo routeTo);
+        IEnumerable<RouteTo> GetAllRouteToInfo();
     }
 }

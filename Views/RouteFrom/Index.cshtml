@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyEticketApplication.Models.RouteFrom>;
 <h1 class="text-center text-muted">From Route List</h1>
 <div>
-    <a class="btn btn-sm btn-primary mb-1" id="addRouteFrom">Add Route</a>
+    <a class="btn btn-sm btn-primary mb-1" asp-action="Create" asp-controller="RouteFrom">Add Route</a>
 </div>
 <table class="table table-bordered">
     <thead>
@@ -28,12 +28,3 @@
 </table>
 
 
-
-<script>
-    var id = document.querySelector("#addRouteFrom");
-
-    id.addEventListener('click', function(){
-       console.log("hi")
-    })
-
-</script>

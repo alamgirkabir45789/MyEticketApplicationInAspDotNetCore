@@ -1,4 +1,5 @@
-﻿using MyEticketApplication.Data;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using MyEticketApplication.Data;
 using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
 
@@ -31,5 +32,26 @@ namespace MyEticketApplication.Repositories.Repository
             }
             return routeFrom;
         }
+
+        public RouteFrom AddRouteFrom(RouteFrom routeFrom,RouteTo routeTo)
+        {
+            var routeToId = new RouteTo();
+            var data = new RouteFrom()
+            {
+                RouteFromName = routeFrom.RouteFromName,
+                RouteTo = routeToId?.RouteToId
+            };
+            _dbContext.RouteFroms.Add(data);
+            _dbContext.SaveChanges();
+            return routeFrom;
+        }
+
+        public IEnumerable<RouteTo> GetAllRouteToInfo()
+        {
+            return _dbContext.RouteToFroms;
+        }
+
+       
+
     }
 }
