@@ -41,6 +41,15 @@ namespace MyEticketApplication.Repositories.Repository
              _dbContext.RouteFroms.Add(routeFrom);
             _dbContext.SaveChanges();
             return routeFrom;
+        } 
+        public RouteFrom UpdateRouteFrom(RouteFrom routeFrom)
+        {
+           
+             _dbContext.RouteFroms.Update(routeFrom);
+            _dbContext.SaveChanges();
+            return routeFrom;
         }
+
+      
     }
 }

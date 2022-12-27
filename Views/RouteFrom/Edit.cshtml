@@ -1,0 +1,30 @@
+﻿@model MyEticketApplication.Models.RouteFrom;
+<h1>Edit Route From</h1>
+<div>
+    <div class="row">
+        <form method="post">
+            <input type="hidden" asp-for="RouteFromId"/>
+            <div class="col-sm-6">
+                <div>
+                    <label class="form-label" asp-for="RouteFromName">Route From</label>
+                    <input class="form-control" asp-for="RouteFromName" type="text" />
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <label class="form-label" asp-for="RouteToId">Route To</label>
+                    <select asp-for="RouteToId" class="form-control" asp-items="ViewBag.RouteToDdl"></select>
+                </div>
+            </div>
+
+           
+                <div>
+                    <input class="btn btn-primary mt-1" type="submit" asp-action="Create" asp-controller="RouteFrom" />
+                <a class="btn btn-primary mt-1"  asp-action="Index"  asp-controller="RouteFrom" >Cancel</a>
+            </div>
+        
+
+        </form>
+    </div>
+</div>

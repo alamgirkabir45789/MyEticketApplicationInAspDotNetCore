@@ -8,5 +8,6 @@ namespace MyEticketApplication.Repositories.IRepository
         RouteFrom GetRouteFromById(int id);  
         RouteFrom DeleteRouteFrom(int id);
         RouteFrom AddRouteFrom(RouteFrom routeFrom);
+        RouteFrom UpdateRouteFrom(RouteFrom routeFrom);
     }
 }

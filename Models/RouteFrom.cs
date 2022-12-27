@@ -7,6 +7,7 @@ namespace MyEticketApplication.Models
         [Key]
         public int RouteFromId { get; set; }
         public string RouteFromName { get; set; } = "";
-        public RouteTo RouteTo { get; set; } 
+        public int RouteToId { get; set; }
+        public virtual RouteTo RouteTo { get; set; } 
     }
 }
