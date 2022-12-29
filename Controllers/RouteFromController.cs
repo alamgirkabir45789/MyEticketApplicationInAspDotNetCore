@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
+using MyEticketApplication.ViewModel;
 
 namespace MyEticketApplication.Controllers
 {
@@ -19,8 +20,9 @@ namespace MyEticketApplication.Controllers
         }
         public IActionResult Index()
         {
-            var data=_routeFromRepository.GetAllFromRoute();
-            return View(data);
+            ViewBag.data = _routeFromRepository.GetAllFromRoute();          
+          
+            return View();
         }
         public IActionResult Delete(int RouteFromId)
         {
@@ -75,10 +77,11 @@ namespace MyEticketApplication.Controllers
         [HttpPost]
         public IActionResult Edit(RouteFrom routeFrom)
         {
-            if(routeFrom.RouteFromId != null)
+            if(routeFrom.RouteFromId !=null)
             {
                 var data = new RouteFrom()
                 {
+                    RouteFromId= routeFrom.RouteFromId,
                     RouteFromName = routeFrom.RouteFromName,
                     RouteToId = routeFrom.RouteToId,
                 };

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using MyEticketApplication.Data;
 using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
@@ -16,7 +17,7 @@ namespace MyEticketApplication.Repositories.Repository
 
         public IEnumerable<RouteFrom> GetAllFromRoute()
         {
-            return _dbContext.RouteFroms;
+            return _dbContext.RouteFroms.Include(r=>r.RouteTo).AsNoTracking().ToList();
         }
         public RouteFrom GetRouteFromById(int id)
         {
