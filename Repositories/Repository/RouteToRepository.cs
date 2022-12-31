@@ -19,11 +19,31 @@ namespace MyEticketApplication.Repositories.Repository
             return routeTo;
         }
 
+        public RouteTo DeleteRouteTo(int RouteToId)
+        {
+            var routeTo=_context.RouteToFroms.FirstOrDefault(f=>f.RouteToId== RouteToId);
+            _context.RouteToFroms.Remove(routeTo);
+            _context.SaveChanges();
+            return routeTo;
+        }
+
+        public RouteTo GetRouteToByRouteId(int RouteToId)
+        {
+            var routeTo = _context.RouteToFroms.FirstOrDefault(f => f.RouteToId == RouteToId);
+            return routeTo;
+        }
+
         public IEnumerable<RouteTo> GetRouteToInfo()
         {
             return _context.RouteToFroms;
         }
 
-        
+        public RouteTo UpdateRouteTo(RouteTo routeTo)
+        {
+           _context.RouteToFroms.Update(routeTo);
+             _context.SaveChanges();
+            return routeTo;
+            
+        }
     }
 }

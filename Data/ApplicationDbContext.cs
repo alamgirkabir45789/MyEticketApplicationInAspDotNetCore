@@ -11,5 +11,7 @@ namespace MyEticketApplication.Data
         }
         public DbSet<RouteFrom> RouteFroms { get; set; }    
         public DbSet<RouteTo> RouteToFroms { get;set; }
+        public DbSet<TransportType> TransportTypes { get; set; }
+        public DbSet<TransportInfo> TransportInfo { get; set; }
     }
 }

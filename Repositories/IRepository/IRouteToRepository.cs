@@ -6,5 +6,8 @@ namespace MyEticketApplication.Repositories.IRepository
     {
     IEnumerable<RouteTo> GetRouteToInfo();
         RouteTo AddRouteTo(RouteTo routeTo);
+        RouteTo DeleteRouteTo(int RouteToId);
+        RouteTo GetRouteToByRouteId(int RouteToId);
+        RouteTo UpdateRouteTo(RouteTo routeTo);
     }
 }

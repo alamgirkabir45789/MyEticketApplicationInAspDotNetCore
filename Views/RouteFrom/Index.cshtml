@@ -1,30 +1,33 @@
-﻿@model IEnumerable<MyEticketApplication.Models.RouteFrom>;
+﻿@*@model IEnumerable<MyEticketApplication.Models.RouteFrom>;*@
+
 <h1 class="text-center text-muted">From Route List</h1>
+
 <div>
-    <a class="btn btn-sm btn-primary mb-1" asp-action="Create" asp-controller="RouteFrom">Add Route</a>
+    <a class="btn btn-primary btn-sm mb-1" asp-action="Create" asp-controller="RouteFrom">Create</a>
 </div>
 <table class="table table-bordered">
     <thead>
-       <tr>
-            <th>SL/No</th>
-            <th>From</th>    
+        <tr>
+
+            <th>From</th>
+            <th>To</th>
             <th>Actions</th>
-       </tr>
+        </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.Select((value,index)=>new{index,value}))
+        @foreach (var item in ViewBag.data)
         {
 
             <tr>
-                <td>@( item.index + 1)</td>
-                <td>@item.value.RouteFromName</td>
+
+                <td>@item.RouteFromName</td>
+                <td>@item.RouteTo.RouteToName</td>
                 <td>
-                    <a class="btn btn-sm btn-warning">Edit</a>
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-RouteFromId="@item.value.RouteFromId">Delete</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-controller="RouteFrom" asp-route-RouteFromId="@item.RouteFromId">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-RouteFromId="@item.RouteTo.RouteToName">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
 

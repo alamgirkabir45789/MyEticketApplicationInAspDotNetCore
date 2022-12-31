@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using MyEticketApplication.Data;
 using MyEticketApplication.Models;
 using MyEticketApplication.Repositories.IRepository;
@@ -16,42 +17,39 @@ namespace MyEticketApplication.Repositories.Repository
 
         public IEnumerable<RouteFrom> GetAllFromRoute()
         {
-            return _dbContext.RouteFroms;
+            return _dbContext.RouteFroms.Include(r => r.RouteTo).AsNoTracking().ToList();
         }
         public RouteFrom GetRouteFromById(int id)
         {
+
+
             return _dbContext.RouteFroms.SingleOrDefault(i => i.RouteFromId == id);
         }
         public RouteFrom DeleteRouteFrom(int id)
         {
             RouteFrom routeFrom = _dbContext.RouteFroms.Find(id);
-            if(routeFrom != null)
+            if (routeFrom != null)
             {
                 _dbContext.RouteFroms.Remove(routeFrom);
-                _dbContext.SaveChanges();                                                                                                                                                                                                                                           
+                _dbContext.SaveChanges();
             }
             return routeFrom;
         }
 
-        public RouteFrom AddRouteFrom(RouteFrom routeFrom,RouteTo routeTo)
+        public RouteFrom AddRouteFrom(RouteFrom routeFrom)
         {
-            var routeToId = new RouteTo();
-            var data = new RouteFrom()
-            {
-                RouteFromName = routeFrom.RouteFromName,
-                RouteTo = routeToId?.RouteToId
-            };
-            _dbContext.RouteFroms.Add(data);
+
+            _dbContext.RouteFroms.Add(routeFrom);
             _dbContext.SaveChanges();
             return routeFrom;
         }
-
-        public IEnumerable<RouteTo> GetAllRouteToInfo()
+        public RouteFrom UpdateRouteFrom(RouteFrom routeFrom)
         {
-            return _dbContext.RouteToFroms;
-        }
 
-       
+            _dbContext.RouteFroms.Update(routeFrom);
+            _dbContext.SaveChanges();
+            return routeFrom;
+        }
 
     }
 }

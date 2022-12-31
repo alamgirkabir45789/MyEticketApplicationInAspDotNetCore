@@ -10,47 +10,94 @@ namespace MyEticketApplication.Controllers
     public class RouteFromController : Controller
     {
         private readonly IRouteFromRepository _routeFromRepository;
+        private readonly IRouteToRepository _routeToRepository;
 
-        public RouteFromController(IRouteFromRepository routeFromRepository)
+
+        public RouteFromController(IRouteFromRepository routeFromRepository, IRouteToRepository routeToRepository)
         {
             _routeFromRepository = routeFromRepository;
+            _routeToRepository = routeToRepository;
         }
         public IActionResult Index()
         {
-            var data=_routeFromRepository.GetAllFromRoute();
-            return View(data);
-        }
+            ViewBag.data = _routeFromRepository.GetAllFromRoute();
 
-        public IActionResult Create( )
-        {
-
-            var data = _routeFromRepository.GetAllRouteToInfo();
-            ViewData["data"] = new SelectList(data, "RouteToId", "RouteToName");
-
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(RouteFrom routeFrom,RouteTo routeTo)
-        {
-             //ViewData["RouteCode"] = new SelectList(_context.Routes, "Code", "Code", routeTo.RouteCode);
-            
-            if (ModelState.IsValid)
-            {
-
-            _routeFromRepository.AddRouteFrom(routeFrom,routeTo);
-                return RedirectToAction("Index");
-            }
             return View();
         }
         public IActionResult Delete(int RouteFromId)
         {
-            if(RouteFromId == 0)
+            if (RouteFromId == 0)
             {
                 return NotFound();
             }
             _routeFromRepository.DeleteRouteFrom(RouteFromId);
             return RedirectToAction("Index");
+        }
+        public IActionResult Create()
+        {
+
+            ViewData["RouteToDdl"] = _routeToRepository
+         .GetRouteToInfo()
+         .Select(c => new SelectListItem() { Text = c.RouteToName, Value = c.RouteToId.ToString() })
+         .ToList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(RouteFrom routeFrom)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var data = new RouteFrom()
+                {
+                    RouteFromName = routeFrom.RouteFromName,
+                    RouteToId = routeFrom.RouteToId,
+                };
+                _routeFromRepository.AddRouteFrom(data);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        public IActionResult Edit(int routeFromId)
+        {
+            var routeFrom = _routeFromRepository.GetRouteFromById(routeFromId);
+            ViewData["RouteToDdl"] = _routeToRepository
+         .GetRouteToInfo()
+         .Select(c => new SelectListItem() { Text = c.RouteToName, Value = c.RouteToId.ToString() })
+         .ToList();
+            return View(routeFrom);
+        }
+        [HttpPost]
+        public IActionResult Edit(int routeFromId,RouteFrom routeFrom)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                var data = new RouteFrom()
+                {
+                    RouteFromId = routeFromId,
+                    RouteFromName = routeFrom.RouteFromName,
+                    RouteToId = routeFrom.RouteToId,
+                };
+                _routeFromRepository.UpdateRouteFrom(data);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _routeFromRepository.GetRouteFromById(routeFromId);
+                ViewData["RouteToDdl"] = _routeToRepository
+             .GetRouteToInfo()
+             .Select(c => new SelectListItem() { Text = c.RouteToName, Value = c.RouteToId.ToString() })
+             .ToList();
+                return View(routeFrom);
+            }
         }
     }
 }
