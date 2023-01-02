@@ -58,9 +58,9 @@ namespace MyEticketApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TransportTypeId,Name")] TransportType transportType)
         {
-            if (ModelState.IsValid)
+            if (transportType.Name !=null)
             {
-                _context.Add(transportType);
+                _context.TransportTypes.Add(transportType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
