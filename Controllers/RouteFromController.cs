@@ -43,6 +43,7 @@ namespace MyEticketApplication.Controllers
 
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(RouteFrom routeFrom)
         {
