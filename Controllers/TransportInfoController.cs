@@ -48,7 +48,7 @@ namespace MyEticketApplication.Controllers
         // GET: TransportInfo/Create
         public IActionResult Create()
         {
-            ViewData["TransportTypeId"] = new SelectList(_context.TransportTypes, "TransportTypeId", "TransportTypeId");
+            ViewData["TransportTypeDdl"] = new SelectList(_context.TransportTypes, "TransportTypeId", "Name");
             return View();
         }
 
@@ -59,13 +59,13 @@ namespace MyEticketApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TransportId,TransportName,TransportType,TransportOwnerName,TransportDescription,SeatNo,TransportTypeId")] TransportInfo transportInfo)
         {
-            if (ModelState.IsValid)
+            if (transportInfo.TransportTypeId !=0)
             {
                 _context.Add(transportInfo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TransportTypeId"] = new SelectList(_context.TransportTypes, "TransportTypeId", "TransportTypeId", transportInfo.TransportTypeId);
+            ViewData["TransportTypeDdl"] = new SelectList(_context.TransportTypes, "TransportTypeId", "Name");
             return View(transportInfo);
         }
 
@@ -82,7 +82,7 @@ namespace MyEticketApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["TransportTypeId"] = new SelectList(_context.TransportTypes, "TransportTypeId", "TransportTypeId", transportInfo.TransportTypeId);
+            ViewData["TransportTypeDdl"] = new SelectList(_context.TransportTypes, "TransportTypeId", "Name");
             return View(transportInfo);
         }
 
@@ -98,7 +98,7 @@ namespace MyEticketApplication.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (transportInfo.TransportTypeId !=0)
             {
                 try
                 {
@@ -118,7 +118,7 @@ namespace MyEticketApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TransportTypeId"] = new SelectList(_context.TransportTypes, "TransportTypeId", "TransportTypeId", transportInfo.TransportTypeId);
+            ViewData["TransportTypeDdl"] = new SelectList(_context.TransportTypes, "TransportTypeId", "Name");
             return View(transportInfo);
         }
 

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-center">Transport Information</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -28,9 +28,9 @@
                 @Html.DisplayNameFor(model => model.SeatNo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TransportTypes)
+               Category
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -52,12 +52,12 @@
                 @Html.DisplayFor(modelItem => item.SeatNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TransportTypes.TransportTypeId)
+                @Html.DisplayFor(modelItem => item.TransportTypes.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TransportId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TransportId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TransportId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TransportId" class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TransportId" class="btn btn-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TransportId" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

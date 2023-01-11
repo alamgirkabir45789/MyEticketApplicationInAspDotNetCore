@@ -39,18 +39,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="TransportTypeId" class="control-label"></label>
-                <select asp-for="TransportTypeId" class ="form-control" asp-items="ViewBag.TransportTypeId"></select>
+                <select asp-for="TransportTypeId" class="form-control" asp-items="ViewBag.TransportTypeDdl"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-danger">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

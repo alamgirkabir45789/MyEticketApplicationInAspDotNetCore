@@ -88,34 +88,28 @@ namespace MyEticketApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransportTypeId,Name")] TransportType transportType)
+        public async Task<IActionResult> Edit(int id,  TransportType transportType)
         {
             if (id != transportType.TransportTypeId)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            else
             {
-                try
+                var data = new TransportType()
                 {
-                    _context.Update(transportType);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TransportTypeExists(transportType.TransportTypeId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                    TransportTypeId = transportType.TransportTypeId,
+                    Name = transportType.Name
+                };
+                _context.TransportTypes.Update(data);
+               await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
+
             return View(transportType);
+               
+       
+          
         }
 
         // GET: TransportTypes/Delete/5
