@@ -7,6 +7,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="images\.DS_Store" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\bg_1.jpg" />
+    <Content Include="images\bg_2.jpg" />
+    <Content Include="images\bg_3.jpg" />
+    <Content Include="images\image_1.jpg" />
+    <Content Include="images\image_2.jpg" />
+    <Content Include="images\image_3.jpg" />
+    <Content Include="images\image_4.jpg" />
+    <Content Include="images\image_5.jpg" />
+    <Content Include="images\image_6.jpg" />
+    <Content Include="images\img.jpg" />
+    <Content Include="images\loc.png" />
+    <Content Include="images\person_1.jpg" />
+    <Content Include="images\person_2.jpg" />
+    <Content Include="images\person_3.jpg" />
+    <Content Include="images\person_4.jpg" />
+    <Content Include="images\staff-1.jpg" />
+    <Content Include="images\staff-2.jpg" />
+    <Content Include="images\staff-3.jpg" />
+    <Content Include="images\staff-4.jpg" />
+    <Content Include="images\work-1.jpg" />
+    <Content Include="images\work-2.jpg" />
+    <Content Include="images\work-3.jpg" />
+    <Content Include="images\work-4.jpg" />
+    <Content Include="images\work-5.jpg" />
+    <Content Include="images\work-6.jpg" />
+    <Content Include="images\work-7.jpg" />
+    <Content Include="images\work-8.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>

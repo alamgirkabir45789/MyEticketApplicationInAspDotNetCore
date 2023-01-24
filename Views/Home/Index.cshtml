@@ -1,8 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<button class="show">Show</button>
+<button class="stop">stop</button>
+<input type="text" id="test2">
+<p id="test">This is demo <b>Hello</b>Text</p>
+
+<script>
+
+    $(document).ready(function () {
+        $(".show").click(function () {
+            alert($("#test2").attr("id"))
+        });
+
+    })
+
+
+</script>
