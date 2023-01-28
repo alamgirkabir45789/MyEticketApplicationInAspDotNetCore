@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-center text-muted">New Agent</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -55,15 +55,15 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.JoiningDate)
+                    @Html.DisplayFor(modelItem => item.JoiningDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UrlImage)
+                    <img src="~/images/@item.UrlImage" alt="" height="100" width="100" class="img-circle" />
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AgentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AgentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AgentId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.AgentId" class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AgentId" class="btn btn-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AgentId" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

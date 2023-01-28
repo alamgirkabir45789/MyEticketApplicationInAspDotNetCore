@@ -1,8 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <button id="toggle">Toggle</button>
+    <h1 class="display-4" id="">Welcome</h1>
+<input type="text" value="Dummy Text">
 </div>
+<script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $('input').val("Welcome")
+   
+  })
+
+
+});
+</script>
