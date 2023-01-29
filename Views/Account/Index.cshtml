@@ -1,0 +1,53 @@
+﻿@model MyEticketApplication.Models.UserRegistration;
+<h1>User Registration</h1>
+<div>
+    <div class="row">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="UserName"></label>
+                    <input class="form-control" asp-for="UserName" type="text" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" type="text" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div> 
+            
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="PhoneNumber"></label>
+                    <input class="form-control" asp-for="PhoneNumber" type="text" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>   
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Password"></label>
+                    <input class="form-control" asp-for="Password" type="text" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div> 
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="ConfirmPassword"></label>
+                    <input class="form-control" asp-for="ConfirmPassword" type="text" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <input class="btn btn-primary mt-1" type="submit" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

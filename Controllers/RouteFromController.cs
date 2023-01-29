@@ -48,7 +48,7 @@ namespace MyEticketApplication.Controllers
         public IActionResult Create(RouteFrom routeFrom)
         {
 
-            if (ModelState.IsValid)
+            if (routeFrom !=null)
             {
                 var data = new RouteFrom()
                 {
@@ -79,7 +79,7 @@ namespace MyEticketApplication.Controllers
         public IActionResult Edit(int routeFromId,RouteFrom routeFrom)
         {
            
-            if (ModelState.IsValid)
+            if (routeFromId !=null && routeFrom !=null)
             {
                 var data = new RouteFrom()
                 {

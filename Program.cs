@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyEticketApplication.Data;
 using MyEticketApplication.Repositories.IRepository;
@@ -10,6 +11,8 @@ builder.Services.AddControllersWithViews();
 //Database service
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //Dependency
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddTransient<IRouteFromRepository, RouteFromRepository>();
 builder.Services.AddTransient<IRouteToRepository, RouteToRepository>();
 var app = builder.Build();
@@ -23,6 +26,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
