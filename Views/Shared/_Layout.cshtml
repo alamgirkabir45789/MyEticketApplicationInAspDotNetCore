@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +19,8 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -48,12 +51,39 @@
                         Dropdown
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Registration</a></li>
+                                <li><a class="dropdown-item" class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                       </ul>
                     </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            @*<li class="nav-item">
+                                <form method="post" asp-action="logout" asp-controller="account">
+                                    <button type="submit" class="nav-link btn btn-link py-0">
+                                        Logout @User.Identity.Name
+                                    </button>
+                                </form>
+                            </li>*@
+
+                        }
+                        else
+                        {
+                            @*<li class="nav-item">
+                                <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                            </li>*@
+
+                            @*<li class="nav-item">
+                                <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+                            </li>*@
+                        }
+
                     </ul>
                 </div>
             </div>

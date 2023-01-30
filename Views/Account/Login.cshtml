@@ -1,0 +1,41 @@
+﻿@model MyEticketApplication.Models.UserLogin;
+<h1>User Login</h1>
+<div>
+    <div class="row">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" type="text" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+        
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" asp-for="Password"></label>
+                    <input class="form-control" asp-for="Password" type="text" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>  <div class="col-sm-6">
+                <div class="checkbox">
+                    <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+            </div>
+           
+
+            <div class="col-sm-6">
+                <div>
+                    <input class="btn btn-primary mt-1" type="submit" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

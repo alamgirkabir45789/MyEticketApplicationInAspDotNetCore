@@ -4,8 +4,7 @@ namespace MyEticketApplication.Models
 {
     public class UserRegistration
     {
-        public string UserName { get; set; }
-
+      
         [EmailAddress]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -14,6 +13,7 @@ namespace MyEticketApplication.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="Password and confirm password not matched")]
         public string ConfirmPassword { get; set; }
     }
 }
