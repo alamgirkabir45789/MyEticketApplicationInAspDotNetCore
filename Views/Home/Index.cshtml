@@ -1,20 +1,55 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-<div class="text-center">
-    <button id="hide">Hide</button>
-    <button id="show">Show</button>
-    <button id="toggle">Toggle</button>
-    <h1 class="display-4" id="">Welcome</h1>
-<input type="text" value="Dummy Text">
+<div id="ancestors" class="text-center">
+  <input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<table>
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>john@example.com</td>
+  </tr>
+  <tr>
+    <td>Mary</td>
+    <td>Moe</td>
+    <td>mary@mail.com</td>
+  </tr>
+  <tr>
+    <td>July</td>
+    <td>Dooley</td>
+    <td>july@greatstuff.com</td>
+  </tr>
+  <tr>
+    <td>Anja</td>
+    <td>Ravendale</td>
+    <td>a_r@test.com</td>
+  </tr>
+  </tbody>
+</table>
+  
 </div>
 <script>
 $(document).ready(function(){
-  $("#hide").click(function(){
-    $('input').val("Welcome")
-   
+  $("input").on("keyup",function(){
+  var val=$(this).val().toLowerCase();
+  $("table tr").filter(function(){
+    $(this).toggle($(this).text().toLocaleLowerCase().indexOf(val)>-1)
+  })
   })
 
 
