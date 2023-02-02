@@ -10,102 +10,242 @@
     <form>
         <div class="row">
             <div class="col-md-2">
-                 <div class="form-group">
-                    <label class="form-label" >From</label>
-                    <select  class="form-control" >
+                <div class="form-group">
+                    <label class="form-label">From</label>
+                    <select class="form-control">
                         <option>Dhaka</option>
                         <option>Rajshahi</option>
                     </select>
-                    <span  class="text-danger"></span>
+                    <span class="text-danger"></span>
                 </div>
-            </div> 
+            </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="form-label" > To</label>
-                    <select  class="form-control" >
+                    <label class="form-label"> To</label>
+                    <select class="form-control">
                         <option>Dhaka</option>
                         <option>Rajshahi</option>
                     </select>
-                    <span  class="text-danger"></span>
+                    <span class="text-danger"></span>
                 </div>
-            </div> 
+            </div>
             <div class="col-md-2">
-               <div class="form-group">
+                <div class="form-group">
                     <label class="form-label">DeperatureDate</label>
-                    <input  class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                        <span  class="text-danger"></span>
-                    </div>
-            </div>  
+                    <input class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
             <div class="col-md-2">
                 <label class="form-label">Return</label>
-                    <input  class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                        <span  class="text-danger"></span>
-                        </div>
+                <input class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span class="text-danger"></span>
+            </div>
             <div class="col-md-2" style="margin-top:2rem">
-          
-           <button type="submit" id="search" class="btn btn-success">Search</button>
-            </div> 
+
+                <button type="submit" id="search" class="btn btn-success">Search</button>
+            </div>
         </div>
 
     </form>
 
 </div>
-<div >
+<div  class="outlineBorder mt-2">
+
+
+<div class="card p-1" id="busInfo">
     <div class="row">
-<div class="col-md-6">
- <div class="card mt-3 p-3">
-        <div class="row">
-            <div class="col-md-6">
+        <div class="col-md-2">
+            <p>Hanif Enterprize</p>
+        </div>
+        <div class="col-md-2">
+            <p>Arival time</p>
+        </div>
+        <div class="col-md-2">
+            <p>Deperature Time</p>
+        </div>
+        <div class="col-md-2">
+            <p>Seat Available</p>
+        </div>
+        <div class="col-md-2">
+            <p>Seat Available</p>
+        </div>
+        <div class="col-md-1">
+            <p>Seat Available</p>
+        </div>
+        <div class="col-md-1">
+            <button class="view">View</button>
+        </div>
+    </div>
+</div >
+<div id="tableDiv">
+    <div class="row">
 
-           <div class="row">
-<div class="col-md-4 offset-1">
-    <input type="checkbox"/>A1
-</div>
-<div class="col-md-6 offset-1">
-    <input type="checkbox"/>A2    
-</div>
-<div class="col-md-4 offset-1">
-    <input type="checkbox"/>A1
-</div>
-<div class="col-md-6 offset-1">
-    <input type="checkbox"/>A2    
-</div>
-           </div>
+        <div class="col-md-6">
+            <div class="card mt-3 p-3">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />A1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />A2
+                            </div>
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />A1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />A2
+                            </div>
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />A1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />A2
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />B1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />B2
+
+                            </div>
+
+
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />B1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />B2
+
+                            </div>
+
+                            <div class="col-md-4 offset-1">
+                                <input type="checkbox" />B1
+                            </div>
+                            <div class="col-md-6 offset-1">
+                                <input type="checkbox" />B2
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label"> Passenger Name</label>
+                        <input class="form-control" type="text">
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
 
-           <div class="row">
-<div class="col-md-4 offset-1">
-    <input type="checkbox"/>B1
-</div>
-<div class="col-md-6 offset-1">
-    <input type="checkbox"/>B2
-    
-</div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label"> Mobile No</label>
+                        <input class="form-control" type="text">
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
 
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label"> NID No</label>
+                        <input class="form-control" type="text">
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
 
-<div class="col-md-4 offset-1">
-    <input type="checkbox"/>B1
-</div>
-<div class="col-md-6 offset-1">
-    <input type="checkbox"/>B2
-    
-</div>
-           </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label"> Deperature Point</label>
+                        <select class="form-control">
+                            <option>Dhaka</option>
+                            <option>Rajshahi</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label"> Dropping Point</label>
+                        <select class="form-control">
+                            <option>Dhaka</option>
+                            <option>Rajshahi</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Seats</th>
+                                <th>Class</th>
+                                <th>Fare</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A1</td>
+                                <td>Ac</td>
+                                <td>2000</td>
+                            </tr>
+                            <tr>
+                                <td>A2</td>
+                                <td>Ac</td>
+                                <td>2000</td>
+                            </tr>
+
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Seat Fare 4000</td>
+                                <td>Service Charge 100</td>
+                                <td>Total4100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <button class="btn btn-primary float-right" type="submit">Submit</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="col-md-6">
-A
 </div>
-    </div>
-   
 
-    
+
 </div>
 <script>
-  
-   
+
+    $(document).ready(function () {
+        $("#busInfo").css("visibility", "hidden");
+        $("#tableDiv").css("visibility", "hidden");
+        $("#search").click(function (e) {
+            e.preventDefault();
+            $("#busInfo").css("visibility", "visible")
+        })
+        $(".view").click(function (e) {
+            e.preventDefault();
+            $("#tableDiv").css("visibility", "visible");
+            $(".outlineBorder").css({"padding":"5px","boxShadow": "3px 3px 5px 5px red"})
+$(this).text("Hide").click(function(){
+            $("#tableDiv").css("visibility", "hidden");
+            $(".outlineBorder").css('visibility','hidden');
+            $(this).text("View")
+})
+        })
+    })
 
 </script>
