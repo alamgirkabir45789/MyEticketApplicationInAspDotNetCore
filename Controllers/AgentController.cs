@@ -10,14 +10,14 @@ namespace MyEticketApplication.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
-        public AgentController(ApplicationDbContext context,IWebHostEnvironment environment) 
-        { 
-        _context= context;
-            _environment= environment;
-        }
-        public async Task <IActionResult> Index()
+        public AgentController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
-            var data=await _context.Agents.ToListAsync();
+            _context = context;
+            _environment = environment;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var data = await _context.Agents.ToListAsync();
             return View(data);
         }
         public async Task<IActionResult> Details(int? id)
@@ -37,12 +37,10 @@ namespace MyEticketApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Create(Agent agent)
+        public async Task<IActionResult> Create(Agent agent)
         {
-            if(agent.ImageUrl != null )
+            if (agent.ImageUrl != null)
             {
-                
-                
                 agent.UrlImage = ProcessUploadImage(agent);
 
                 _context.Agents.Add(agent);
@@ -53,7 +51,7 @@ namespace MyEticketApplication.Controllers
         }
         public string ProcessUploadImage(Agent agent)
         {
-                string uniqueFileName = null;
+            string uniqueFileName = null;
             if (agent.ImageUrl != null)
             {
 
@@ -65,12 +63,12 @@ namespace MyEticketApplication.Controllers
                     agent.ImageUrl.CopyTo(fileStream);
                 };
             }
-                return uniqueFileName;
+            return uniqueFileName;
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -86,7 +84,7 @@ namespace MyEticketApplication.Controllers
             {
                 var agent = await _context.Agents
                .FirstOrDefaultAsync(m => m.AgentId == id);
-               
+
                 var CurrentImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", agent.UrlImage);
                 _context.Agents.Remove(agent);
                 if (await _context.SaveChangesAsync() > 0)
@@ -109,7 +107,7 @@ namespace MyEticketApplication.Controllers
             {
                 return NotFound();
             }
-            var agent=await _context.Agents.FirstOrDefaultAsync(m => m.AgentId == id);
+            var agent = await _context.Agents.FirstOrDefaultAsync(m => m.AgentId == id);
             return View(agent);
         }
 

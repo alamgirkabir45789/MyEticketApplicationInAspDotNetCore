@@ -74,7 +74,7 @@
             <p>Seat Available</p>
         </div>
         <div class="col-md-1">
-            <button class="view">View</button>
+            <button class="view btn btn-warning">View</button>
         </div>
     </div>
 </div >
@@ -230,7 +230,8 @@
 <script>
 
     $(document).ready(function () {
-        $("#busInfo").css("visibility", "hidden");
+
+    $("#busInfo").css("visibility", "hidden");
         $("#tableDiv").css("visibility", "hidden");
         $("#search").click(function (e) {
             e.preventDefault();
@@ -238,13 +239,19 @@
         })
         $(".view").click(function (e) {
             e.preventDefault();
-            $("#tableDiv").css("visibility", "visible");
-            $(".outlineBorder").css({"padding":"5px","boxShadow": "3px 3px 5px 5px red"})
-$(this).text("Hide").click(function(){
-            $("#tableDiv").css("visibility", "hidden");
+console.log($(this).text())
+if($(this).text()==="View"){
+$("#tableDiv").css("visibility", "visible");
+
+            $(".outlineBorder").css({"visibility":"visible","padding":"5px","boxShadow": "3px 3px 5px 5px red"})
+            $(this).text("Hide")
+}else{
+     $("#tableDiv").css("visibility", "hidden");
             $(".outlineBorder").css('visibility','hidden');
             $(this).text("View")
-})
+}
+
+
         })
     })
 

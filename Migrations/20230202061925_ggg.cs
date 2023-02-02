@@ -6,11 +6,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyEticketApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class test5 : Migration
+    public partial class ggg : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Agents",
+                columns: table => new
+                {
+                    AgentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UrlImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agents", x => x.AgentId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -48,6 +67,32 @@ namespace MyEticketApplication.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RouteToFroms",
+                columns: table => new
+                {
+                    RouteToId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RouteToName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RouteToFroms", x => x.RouteToId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransportTypes",
+                columns: table => new
+                {
+                    TransportTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransportTypes", x => x.TransportTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,6 +201,50 @@ namespace MyEticketApplication.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RouteFroms",
+                columns: table => new
+                {
+                    RouteFromId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RouteFromName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RouteToId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RouteFroms", x => x.RouteFromId);
+                    table.ForeignKey(
+                        name: "FK_RouteFroms_RouteToFroms_RouteToId",
+                        column: x => x.RouteToId,
+                        principalTable: "RouteToFroms",
+                        principalColumn: "RouteToId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransportInfo",
+                columns: table => new
+                {
+                    TransportId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TransportName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TransportType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TransportOwnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TransportDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SeatNo = table.Column<int>(type: "int", nullable: false),
+                    TransportTypeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransportInfo", x => x.TransportId);
+                    table.ForeignKey(
+                        name: "FK_TransportInfo_TransportTypes_TransportTypeId",
+                        column: x => x.TransportTypeId,
+                        principalTable: "TransportTypes",
+                        principalColumn: "TransportTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -194,11 +283,24 @@ namespace MyEticketApplication.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RouteFroms_RouteToId",
+                table: "RouteFroms",
+                column: "RouteToId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransportInfo_TransportTypeId",
+                table: "TransportInfo",
+                column: "TransportTypeId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Agents");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -215,10 +317,22 @@ namespace MyEticketApplication.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "RouteFroms");
+
+            migrationBuilder.DropTable(
+                name: "TransportInfo");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "RouteToFroms");
+
+            migrationBuilder.DropTable(
+                name: "TransportTypes");
         }
     }
 }

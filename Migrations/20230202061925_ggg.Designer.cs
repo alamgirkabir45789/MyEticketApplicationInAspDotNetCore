@@ -12,8 +12,8 @@ using MyEticketApplication.Data;
 namespace MyEticketApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230130102522_test5")]
-    partial class test5
+    [Migration("20230202061925_ggg")]
+    partial class ggg
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
